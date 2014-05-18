@@ -1,0 +1,28 @@
+<%= form_for @employee do |f| %>
+	<%= f.label :name %>:
+	<%= f.text_field :name %>
+	<br />
+	<%= f.label :ssn, 'Social Security Number'%>:
+	<%= f.number_field :ssn %>
+	<br />
+	<%= f.label :hiring_date, 'Date of Hire'%>:
+	<%= f.date_field :hiring_date%>
+	<br />
+	<%= f.label :birthday, 'Birthdate' %>:
+	<%= f.date_field :birthday %>
+	<br />
+	<%= f.label :prob_expire, 'Probation Due' %>:
+	<%= f.date_field :prob_expire%>
+	<br />
+	<%= f.label :act_insure, 'Benefit Eligibility' %>:
+	<%= f.date_field :act_insure %>
+	<br />
+	<%= f.label :ann_review, 'Annual Review' %>:
+	<%= f.date_field :ann_review %>
+	<br />
+	
+	<%= f.submit %>
+	<% end %>
+
+	
+	

@@ -1,0 +1,12 @@
+<h1>Welcome, <%= @user.username %></h1>
+E-mail: <%= @user.email %><br />
+<%= link_to 'edit your profile', edit_user_path %>
+<hr>
+
+<% @employees.each do |e| %>
+<%= e.name %>  <%= link_to 'edit info', edit_employee_path(e) %>  <%= link_to 'delete', e, method: :delete %>
+<br />
+<% end %>
+<br />
+<%= link_to 'add employees', new_employee_path %>
+
