@@ -1,0 +1,43 @@
+<h1>testing preivew page</h1>
+<div id="main">
+	<div id='type'>
+		<strong>Birthdate </strong>
+		<br />
+		<% @employees.each do |e| %>
+		<%= e.name %> : <%= e.birthday %><br />
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Date of Hire</strong> 
+		<br />
+		<% @employees.each do |e| %>
+		<%= e.name %> : <%= e.hiring_date %><br />
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Probation Due</strong>
+		<br />
+		<% @employees.each do |e| %>
+		<%= e.name %> : <%= e.prob_expire %><br />
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Benefit Eligibility</strong>
+		<br />
+		<% @employees.each do |e| %>
+		<%= e.name %> : <%= e.act_insure %><br />
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Annual Review</strong>
+		<br />
+		<% @employees.each do |e| %>
+		<%= e.name %> : <%= e.ann_review %><br />
+		<% end %>
+	</div>
+</div>
+

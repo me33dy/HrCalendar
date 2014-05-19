@@ -1,11 +1,9 @@
 class EmployeesController < ApplicationController
 	
-	# def index
-	# 	@employees = Employee.all
-	# end
 	def new
 		@employee = current_user.employees.new
 	end
+	
 	def create
 		
 		@employee = current_user.employees.new(employee_params)

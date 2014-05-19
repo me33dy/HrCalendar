@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user
+	before_action :correct_user, only: [:edit, :update, :show]
 	def index
 		@users = User.all
 
@@ -19,27 +21,36 @@ class UsersController < ApplicationController
 		end
 	end
 	def show
-		@user = User.find(params[:id])
+		set_user
 		@employees = @user.employees
 
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		set_user
 	end
 
 	def update
-		@user = User.find(params[:id])
+		set_user
 		if @user.update_attributes(user_params)
 			redirect_to @user
 		else
 			render 'edit'
 		end
 	end
+	def preview
+		@employees = current_user.employees
+	end
 
 
 	private
+	def set_user
+		@user = User.find(params[:id])
+	end
 	def user_params
 		params.require(:user).permit(:username, :email, :password)
+	end
+	def correct_user
+		redirect_to new_sessions_path unless current_user == User.find(params[:id])
 	end
 end
