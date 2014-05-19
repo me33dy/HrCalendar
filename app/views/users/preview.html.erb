@@ -4,7 +4,9 @@
 		<strong>Birthdate </strong>
 		<br />
 		<% @employees.each do |e| %>
-		<%= e.name %> : <%= e.birthday %><br />
+		<% if e.birthday == Time.now.month %>
+			<%= e.name %> : <%= e.birthday %><br />
+			<% end %>
 		<% end %>
 	</div>
 

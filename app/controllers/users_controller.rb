@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user
+	before_action :authenticate_user, except: [:new, :create]
 	before_action :correct_user, only: [:edit, :update, :show]
 	def index
 		@users = User.all
@@ -47,6 +47,7 @@ class UsersController < ApplicationController
 	def set_user
 		@user = User.find(params[:id])
 	end
+
 	def user_params
 		params.require(:user).permit(:username, :email, :password)
 	end
