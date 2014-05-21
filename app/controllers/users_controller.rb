@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 		@users = User.all
 
 	end
+	
+	def test_view
+	end
 
 	def new
 		@user = User.new

@@ -6,6 +6,7 @@ Hrcalendar::Application.routes.draw do
 
   resources :users do
     get 'preview'
+    get 'test_view'
   end
 
   

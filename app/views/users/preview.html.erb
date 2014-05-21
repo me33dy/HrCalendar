@@ -1,10 +1,23 @@
 <h1>testing preivew page</h1>
 <div id="main">
 	<div id='type'>
+
+
+
+<%= form_tag user_preview_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "view by month", :name => nil %>
+  </p>
+<% end %>
+<br />
+
+		<% select_month(Date.today) %>
+		<br />
 		<strong>Birthdate </strong>
 		<br />
 		<% @employees.each do |e| %>
-		<% if e.birthday == Time.now.month %>
+		<% if e.birthday.month.to_s == params[:search] %>
 			<%= e.name %> : <%= e.birthday %><br />
 			<% end %>
 		<% end %>
@@ -14,7 +27,9 @@
 		<strong>Date of Hire</strong> 
 		<br />
 		<% @employees.each do |e| %>
+		<% if e.hiring_date.month.to_s == params[:search] %>
 		<%= e.name %> : <%= e.hiring_date %><br />
+			<% end %>
 		<% end %>
 	</div>
 
@@ -22,7 +37,9 @@
 		<strong>Probation Due</strong>
 		<br />
 		<% @employees.each do |e| %>
+		<% if e.prob_expire.month.to_s == params[:search] %>
 		<%= e.name %> : <%= e.prob_expire %><br />
+			<% end %>
 		<% end %>
 	</div>
 
@@ -30,7 +47,9 @@
 		<strong>Benefit Eligibility</strong>
 		<br />
 		<% @employees.each do |e| %>
+		<% if e.act_insure.month.to_s == params[:search] %>
 		<%= e.name %> : <%= e.act_insure %><br />
+			<% end %>
 		<% end %>
 	</div>
 
@@ -38,7 +57,9 @@
 		<strong>Annual Review</strong>
 		<br />
 		<% @employees.each do |e| %>
+		<% if e.ann_review.month.to_s == params[:search] %>
 		<%= e.name %> : <%= e.ann_review %><br />
+			<% end %>
 		<% end %>
 	</div>
 </div>
