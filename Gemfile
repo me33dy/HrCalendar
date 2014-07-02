@@ -6,7 +6,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'genghis', '~>1.4.1'
 gem 'bootstrap-sass', '~> 3.1.1'
 
-
+gem 'angularjs-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

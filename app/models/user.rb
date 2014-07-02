@@ -21,6 +21,7 @@ class User
   	self.salt = BCrypt::Engine.generate_salt
   	self.hashed_password = BCrypt::Engine.hash_secret(self.password, self.salt)
   	self.password = nil 
+    self.password_confirmation = nil
   end
 
 

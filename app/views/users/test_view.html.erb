@@ -1,1 +1,62 @@
-test_view.html.erb
+<div x-ng-controller='ViewController'>
+<form>
+	<input type='text' x-ng-model='filter.month'>
+</form>
+
+
+
+
+<strong>Birthdate </strong>
+		<br />
+		<% @employees.each do |e| %>
+		<% if e.birthday.month.to_s == filter.month%>
+			<%= e.name %> : <%= e.birthday %><br />
+			<% end %>
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Date of Hire</strong> 
+		<br />
+		<% @employees.each do |e| %>
+		<% if e.hiring_date.month.to_s %>
+		<%= e.name %> : <%= e.hiring_date %><br />
+			<% end %>
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Probation Due</strong>
+		<br />
+		<% @employees.each do |e| %>
+		<% if e.prob_expire.month.to_s %>
+		<%= e.name %> : <%= e.prob_expire %><br />
+			<% end %>
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Benefit Eligibility</strong>
+		<br />
+		<% @employees.each do |e| %>
+		<% if e.act_insure.month.to_s %>
+		<%= e.name %> : <%= e.act_insure %><br />
+			<% end %>
+		<% end %>
+	</div>
+
+	<div id='type'>
+		<strong>Annual Review</strong>
+		<br />
+		<% @employees.each do |e| %>
+		<% if e.ann_review.month.to_s %>
+		<%= e.name %> : <%= e.ann_review %><br />
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+
+
+</div>
+

@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 		@users = User.all
 
 	end
-	
+
 	def test_view
+		@users = User.all
 	end
 
 	def new
@@ -24,8 +25,7 @@ class UsersController < ApplicationController
 		end
 	end
 	def show
-		set_user
-		@employees = @user.employees
+		@employees = current_user.employees
 
 	end
 
