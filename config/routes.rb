@@ -2,14 +2,9 @@ Hrcalendar::Application.routes.draw do
   
   resources :users do
     resources :employees
+    # get 'preview',
+    # get 'test_view'
   end
-
-  resources :users do
-    get 'preview'
-    get 'test_view'
-  end
-
-  
 
   resource :sessions, only: [:new, :create, :destroy]
   root 'staticpages#home'

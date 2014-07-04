@@ -1,6 +1,15 @@
 class EmployeesController < ApplicationController
+	before_action :authenticate_user
+	before_action :set_user
 	before_action :correct_user
+	before_action :set_employee, only: [:show, :edit, :update, :destroy]
 	
+	def index
+		@employees = current_user.employees
+		
+	end
+
+
 	def new
 		@employee = current_user.employees.new
 	end
@@ -16,11 +25,9 @@ class EmployeesController < ApplicationController
 	end
 
 	def edit
-		set_employee
 	end
 
 	def update
-		set_employee
 		if @employee.update_attributes(employee_params)
 			redirect_to current_user
 		else
@@ -29,12 +36,14 @@ class EmployeesController < ApplicationController
 	end
 	
 	def destroy
-		set_employee
 		@employee.destroy
 		redirect_to current_user
 	end
 
 	private
+	def set_user
+		@user = User.find(params[:user_id])
+	end
 	def set_employee
 		@employee = current_user.employees.find(params[:id])
 	end

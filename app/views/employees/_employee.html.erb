@@ -1,6 +1,0 @@
-<%= @employees.each do |e| %>
-	<%= e.name %>  
-	<%= link_to 'edit info', edit_user_employee_path(@user,e), class: "btn btn-warning"%>  
-	<%= link_to 'delete', user_employee_path(@user, e), method: :delete, class: "btn btn-danger", data: { confirm: "Delete #{e.name} ?"}, id: "delete_employee_link", remote: true %>
-	<br />
-<% end %>
