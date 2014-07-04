@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+	before_action :correct_user
 	
 	def new
 		@employee = current_user.employees.new
@@ -15,7 +16,6 @@ class EmployeesController < ApplicationController
 	end
 
 	def edit
-		# raise params.inspect
 		set_employee
 	end
 

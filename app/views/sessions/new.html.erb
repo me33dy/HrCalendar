@@ -1,8 +1,11 @@
-<h2>User log in</h2>
-<%= form_for :session, :url => sessions_path do |f| %>
-<%= f.label :email %>
-<%= f.text_field :email %><br />
-<%= f.label :password %>
-<%= f.password_field :password %><br />
-<%= f.submit 'log in' %>
-<% end %>
+<div class="row">
+	<h2>User log in</h2>
+	<%= form_for :session, :url => sessions_path do |f| %>
+		<%= f.label :email %>
+		<%= f.text_field :email %><br />
+		<%= f.label :password %>
+		<%= f.password_field :password %><br />
+		<%= f.submit 'log in' %>
+	<% end %>
+</div>
+

@@ -8,7 +8,7 @@ class User
   field :salt, type: String
   field :hashed_password, type: String
   
-  has_many :employees
+  has_many :employees, dependent: :destroy
 
 
   def authenticate(password)

@@ -1,16 +1,35 @@
-<h1>Welcome, <%= @user.username %></h1>
-E-mail: <%= @user.email %><br />
-<%= link_to 'edit your profile', edit_user_path %>
-<hr>
+<div class="row">	
+	<h1>Welcome, <%= @user.username %></h1>
+	E-mail: <%= @user.email %><br />
+	<%= link_to 'edit your profile', edit_user_path %>
+	<hr>
 
-<% @employees.each do |e| %>
-<%= e.name %>  <%= link_to 'edit info', edit_user_employee_path(@user,e) %>  <%= link_to 'delete', user_employee_path(@user, e), method: :delete %>
-<br />
-<% end %>
+</div>
+<div class="row">
 
-<%= link_to 'add employees', new_user_employee_path(@user) %>
-<br />
-<%= link_to 'preview events', user_preview_path(current_user) %>
-<br />
+	<!-- col-offset to main the distance between 2 columns, push make article stay at the right side in when screen in higher resolution  -->
+	<article class="col-sm-7 col-sm-offset-1 col-sm-push-4">
+		<div class="table-responsive">
+			<table class="table">
+				<% @employees.each do |e| %>
+					<tr>
+						<td><%= e.name %></td>  
+						<td><%= link_to 'edit info', edit_user_employee_path(@user,e), class: "btn btn-warning"%> </td> 
+						<td><%= link_to 'delete', user_employee_path(@user, e), method: :delete, class: "btn btn-danger", data: { confirm: "Delete #{e.name} ?"} %></td>
+					</tr>
+				<% end %>
+			</table>
+		<div>
+	</article>
+	<!-- pull to keep the aside on the left, corresponding to article push, in higher resolution -->
+	<aside class="col-sm-4 col-sm-pull-8">
+		<%= link_to 'add employees', new_user_employee_path(@user) %>
+		<br />
+		<%= link_to 'preview events', user_preview_path(current_user) %>
+	</aside>
+</div>
+
+
+
 
 
