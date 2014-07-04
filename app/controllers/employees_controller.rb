@@ -6,7 +6,8 @@ class EmployeesController < ApplicationController
 	
 	def index
 		@employees = current_user.employees
-		
+		@employee = current_user.employees.new
+
 	end
 
 
@@ -17,11 +18,16 @@ class EmployeesController < ApplicationController
 	def create
 		
 		@employee = current_user.employees.new(employee_params)
-		if @employee.save
-			redirect_to current_user
-		else
-			render 'new'
-		end
+			respond_to do |format|
+				if @employee.save
+					format.html { redirect_to user_employees }
+					format.js
+					format.json { render json: @employee, status: :created, location: @employee }
+				else
+					format.html { render action: 'new' }
+					# format.json { render json: @employee.errors, status: :unprocessable_entity }
+				end
+			end
 	end
 
 	def edit
