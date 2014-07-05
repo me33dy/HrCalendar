@@ -26,7 +26,8 @@ class UsersController < ApplicationController
 		end
 	end
 	def show
-		@employees = current_user.employees
+		@employees = @user.employees
+		@employee = @user.employees.new
 
 	end
 

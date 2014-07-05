@@ -1,1 +1,6 @@
-<li><%= employee.name %></li>
+<!-- <li><%#= employee.name %></li> -->
+<tr>
+	<td><%= employee.name %></td>  
+	<td><%= link_to 'edit info', edit_user_employee_path(@user,employee.id), class: "btn btn-warning"%> </td> 
+	<td><%= link_to 'delete', user_employee_path(@user, employee.id), method: :delete, class: "btn btn-danger", data: { confirm: "Delete #{employee.name} ?"}, remote: true %></td>
+</tr>

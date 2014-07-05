@@ -5,22 +5,22 @@ class EmployeesController < ApplicationController
 	before_action :set_employee, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		@employees = current_user.employees
-		@employee = current_user.employees.new
+		@employees = @user.employees
+		@employee = @user.employees.new
 
 	end
 
 
 	def new
-		@employee = current_user.employees.new
+		@employee = @user.employees.new
 	end
 
 	def create
 		
-		@employee = current_user.employees.new(employee_params)
+		@employee = @user.employees.new(employee_params)
 			respond_to do |format|
 				if @employee.save
-					format.html { redirect_to user_employees }
+					format.html { redirect_to @user }
 					format.js
 					format.json { render json: @employee, status: :created, location: @employee }
 				else
@@ -35,7 +35,7 @@ class EmployeesController < ApplicationController
 
 	def update
 		if @employee.update_attributes(employee_params)
-			redirect_to current_user
+			redirect_to @user
 		else
 			render 'edit'
 		end
@@ -43,7 +43,10 @@ class EmployeesController < ApplicationController
 	
 	def destroy
 		@employee.destroy
-		redirect_to current_user
+		respond_to do |format|
+			format.html { redirect_to @user }
+			format.js
+		end
 	end
 
 	private
