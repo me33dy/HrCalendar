@@ -7,9 +7,7 @@ class UsersController < ApplicationController
 
 	end
 
-	def test_view
-		@users = User.all
-	end
+
 
 	def new
 		@user = User.new
@@ -25,6 +23,7 @@ class UsersController < ApplicationController
 			render 'new'
 		end
 	end
+	
 	def show
 		@employees = @user.employees
 		@employee = @user.employees.new
@@ -41,9 +40,7 @@ class UsersController < ApplicationController
 			render 'edit'
 		end
 	end
-	def preview
-		@employees = current_user.employees
-	end
+
 
 
 	private

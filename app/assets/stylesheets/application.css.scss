@@ -12,4 +12,8 @@
  *= require_tree .
  */
 @import 'bootstrap';
+body, header, nav, footer, div, p, aside, article, input, table, tbody, tr, td, a {
+	margin: 0;
+	padding: 0;
+}
 

@@ -10,23 +10,20 @@
 	<!-- col-offset to main the distance between 2 columns, push make article stay at the right side in when screen in higher resolution  -->
 	<article class="col-sm-7 col-sm-offset-1 col-sm-push-4">
 		<div class="table-responsive">
-			<!-- <table class="table" id="employees">
-				<%# @employees.each do |e| %>
-					<tr>
-						<td><%#= e.name %></td>  
-						<td><%#= link_to 'edit info', edit_user_employee_path(@user,e), class: "btn btn-warning"%> </td> 
-						<td><%#= link_to 'delete', user_employee_path(@user, e), method: :delete, class: "btn btn-danger", data: { confirm: "Delete #{e.name} ?"} %></td>
-					</tr>
-				<%# end %>
-			</table> -->
-			<table class="table" id="employees">
-				<thead>
-					<tr><th>name:</th><th>options</th><th></th></tr>
-				</thead>
-					<%= render @employees %>
+			
+				<table class="table" >
+					<thead>
+						<tr><th>name</th><th>options</th><th></th></tr>
+					</thead>
 
-
-			</table>
+					<tbody id="employees">
+					<% if @employees.size > 1 %>
+						<%= render @employees  %>
+					<% else %>
+						<tr><td><p>no employees available<td><tr><p>
+					<% end %>
+					</tbody>
+				</table>
 		<div>
 	</article>
 	<!-- pull to keep the aside on the left, corresponding to article push, in higher resolution -->
