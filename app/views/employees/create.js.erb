@@ -1,4 +1,6 @@
+
 // $("<%= escape_javascript(render @employee) %>").appendTo("#employees");
 $('#new_employee').remove();
 $('#new_employee_link').show();
 $('#employees').append("<%= escape_javascript(render @employee) %>");
+// $("<%= escape_javascript(render @employee) %>").appendTo("#employees.tbody.tr:last");

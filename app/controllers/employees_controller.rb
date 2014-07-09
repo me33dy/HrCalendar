@@ -7,7 +7,6 @@ class EmployeesController < ApplicationController
 	def index
 		@employees = @user.employees
 		@employee = @user.employees.new
-
 	end
 
 
