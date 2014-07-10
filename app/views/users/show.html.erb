@@ -1,3 +1,6 @@
+<script type="text/javascript">
+
+</script>
 <div class="row">	
 	<h1>Welcome, <%= @user.username %></h1>
 	E-mail: <%= @user.email %><br />
@@ -20,7 +23,7 @@
 					<% if @employees.size > 1 %>
 						<%= render @employees  %>
 					<% else %>
-						<tr><td><p>no employees available<td><tr><p>
+						<tr id="no_employee_text"><td><p calss="label">no employees available<td><tr><p>
 					<% end %>
 					</tbody>
 				</table>
