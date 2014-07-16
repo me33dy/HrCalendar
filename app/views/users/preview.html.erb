@@ -4,7 +4,7 @@
 
 
 
-<%= form_tag user_preview_path, :method => 'get' do %>
+<%= form_tag preview_user_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "view by month", :name => nil %>
@@ -13,7 +13,7 @@
 <br />
 
 		
-		<strong>Birthdate </strong>
+		<strong>Birthday </strong>
 		<br />
 		<% @employees.each do |e| %>
 		<% if e.birthday.month.to_s == params[:search] %>

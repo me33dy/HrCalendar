@@ -1,14 +1,18 @@
 class EmployeesController < ApplicationController
 	before_action :authenticate_user
-	before_action :set_user
 	before_action :correct_user
+	before_action :set_user
 	before_action :set_employee, only: [:show, :edit, :update, :destroy]
+	respond_to :json, :html
 	
 	def index
 		@employees = @user.employees
-		@employee = @user.employees.new
+		respond_with @employees
 	end
 
+	def show
+		respond_with @employee
+	end
 
 	def new
 		@employee = @user.employees.new
@@ -20,11 +24,11 @@ class EmployeesController < ApplicationController
 			respond_to do |format|
 				if @employee.save
 					format.html { redirect_to @user }
-					format.js
-					format.json { render json: @employee, status: :created, location: @employee }
+        			format.json { render json: @employee, status: :created }
+
 				else
 					format.html { render action: 'new' }
-					# format.json { render json: @employee.errors, status: :unprocessable_entity }
+					format.json { render json: @employee.errors, status: :unprocessable_entity }
 				end
 			end
 	end
@@ -34,9 +38,15 @@ class EmployeesController < ApplicationController
 
 	def update
 		if @employee.update_attributes(employee_params)
-			redirect_to @user
+			respond_to do |format|
+			format.html { redirect_to @user }
+			format.json { render nothing: true, status: :no_content }
+			end
 		else
-			render 'edit'
+			respond_to do |format|
+			format.html { render 'edit' }
+			format.json { render json: @employee.errors, status: :unprocessable_entity}
+			end
 		end
 	end
 	
@@ -44,7 +54,7 @@ class EmployeesController < ApplicationController
 		@employee.destroy
 		respond_to do |format|
 			format.html { redirect_to @user }
-			format.js
+			format.json { render json: { head: :ok } }
 		end
 	end
 

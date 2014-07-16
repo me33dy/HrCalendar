@@ -5,6 +5,9 @@ gem 'rails', '4.0.4'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'genghis', '~>1.4.1'
 gem 'bootstrap-sass', '~> 3.1.1'
+# genereate RESTful api 
+gem 'active_model_serializers'
+
 
 gem 'angularjs-rails'
 # Use SCSS for stylesheets

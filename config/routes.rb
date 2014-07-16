@@ -2,7 +2,7 @@ Hrcalendar::Application.routes.draw do
   
   resources :users do
     resources :employees
-    # get 'preview',
+    get 'preview', on: :member
     # get 'test_view'
   end
 

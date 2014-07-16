@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user, except: [:new, :create]
-	before_action :set_user, only: [:edit, :update, :show]
+	before_action :set_user, only: [:edit, :update, :show, :preview]
 	before_action :correct_user, only: [:edit, :update, :show]
 	def index
 		@users = User.all
-
 	end
 
+	def preview
+		@employees = @user.employees
+	end
 
 
 	def new

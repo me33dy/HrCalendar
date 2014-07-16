@@ -1,7 +1,76 @@
-<h5>Employees</h5>
 
-<ul id="employees">
-<%= render @employees %>
-</ul>
-<hr>
-<%= render 'employee_form' %>
+	<div class="panel panel-default" ng-app="employeeApp" id="defaultContainer" data-user-id=<%= @user.id.to_s %> class="row" ng-controller="defaultCtrl" >
+        <div class="col-sm-6 col-sm-offset-1 col-sm-push-4">
+        	<!-- <article > -->
+	            <table class="table table-striped table-bordered">
+	                <thead>
+	                	<tr>
+		                	<th>Name</th>
+		                	<th>Birthday</th>
+		                	<th>Options</th>
+	                	</tr>
+	                </thead>
+	                <tbody>
+	                    <tr ng-hide="employees.length">
+	                        <td colspan="3" class="text-center">There is no employee in your record</td>
+	                    </tr>
+	                    <tr ng-repeat="e in employees">
+	                        <td>{{e.name}}</td>
+	                        <td>{{e.birthday | date}}</td>
+	                        <td class="text-center">
+	                        	<button class="btn btn-sm btn-primary" ng-click="editOrCreateEmployee(e)">
+	                        		Edit
+	                        	</button>
+	                         	<button class="btn btn-sm btn-primary btn-danger" ng-click="deleteEmployee(e)" >Delete
+	                        	</button>
+	                        </td>
+	                    </tr>
+	                </tbody>
+            	</table>
+        </div>
+          <!--   </article> -->
+            <aside class="col-sm-5 col-sm-pull-8">
+            	<button class="btn btn-primary" 
+                ng-click="listEmployees()">Refresh table</button>
+            	<button class="btn btn-primary" 
+                ng-click="editOrCreateEmployee()">Add  New Employee</button>
+
+                <div class="panel-body" ng-show="formDisplay">
+				    <div class="form-group">
+				        <label>Name:</label>
+				        <input class="form-control" ng-model="currentEmployee.name" />
+				    </div>
+				    <div class="form-group">
+				        <label>Social Secure #:</label>
+				        <input class="form-control" ng-model="currentEmployee.ssn" />
+				    </div>
+				    <div class="form-group">
+				        <label>Birthday:</label>
+				        <input type="date" class="form-control" ng-model="currentEmployee.birthday" />
+				    </div>
+
+				    <div class="form-group">
+				        <label>Date of hire:</label>
+				        <input type="date" class="form-control" ng-model="currentEmployee.hiring_date" />
+				    </div>
+
+				    <div class="form-group">
+				        <label>Probation due:</label>
+				        <input type="date" class="form-control" ng-model="currentEmployee.prob_expire" />
+				    </div>
+
+				    <div class="form-group">
+				        <label>Benefit eligible:</label>
+				        <input type="date" class="form-control" ng-model="currentEmployee.act_insure" />
+				    </div>
+
+				    <button class="btn btn-primary" ng-click="saveChange(currentEmployee)">Save</button>
+				    <button class="btn btn-primary" ng-click="cancelChange()">Cancel</button>
+				</div>
+
+            </aside>
+
+           
+        
+    </div>
+
