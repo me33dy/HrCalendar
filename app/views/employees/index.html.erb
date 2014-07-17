@@ -1,6 +1,6 @@
 
-	<div class="panel panel-default" ng-app="employeeApp" id="defaultContainer" data-user-id=<%= @user.id.to_s %> class="row" ng-controller="defaultCtrl" >
-        <div class="col-sm-6 col-sm-offset-1 col-sm-push-4">
+	<div ng-app="employeeApp" id="defaultContainer" data-user-id=<%= @user.id.to_s %> class="row" ng-controller="defaultCtrl" >
+        <div class="panel-body col-sm-6 col-sm-offset-1 col-sm-push-4">
         	<!-- <article > -->
 	            <table class="table table-striped table-bordered">
 	                <thead>
@@ -29,16 +29,21 @@
             	</table>
         </div>
           <!--   </article> -->
-            <aside class="col-sm-5 col-sm-pull-8">
-            	<button class="btn btn-primary" 
-                ng-click="listEmployees()">Refresh table</button>
-            	<button class="btn btn-primary" 
-                ng-click="editOrCreateEmployee()">Add  New Employee</button>
+            <aside class="panel-body col-sm-5 col-sm-pull-8">
+            	<div class=>
+	            	<button class="btn btn-primary" 
+	                ng-click="listEmployees()">Refresh table</button>
+	            	<button class="btn btn-primary" 
+	                ng-click="editOrCreateEmployee()">Add  New Employee</button>
+	            </div>
 
-                <div class="panel-body" ng-show="formDisplay">
+                <form name="employeeForm" class="panel-body" ng-show="formDisplay" novalidate>
 				    <div class="form-group">
 				        <label>Name:</label>
-				        <input class="form-control" ng-model="currentEmployee.name" />
+				        <input name="name" class="form-control" ng-model="currentEmployee.name" required />
+				        <div class="error" ng-show="employeeForm.name.$dirty && employeeForm.name.$invalid">
+				        	<span class="error" ng-show="employeeForm.name.$error.required">Name can not be blank.</span>
+				        </div>
 				    </div>
 				    <div class="form-group">
 				        <label>Social Secure #:</label>
@@ -51,22 +56,27 @@
 
 				    <div class="form-group">
 				        <label>Date of hire:</label>
-				        <input type="date" class="form-control" ng-model="currentEmployee.hiring_date" />
+				        <input name="hiredDay" type="date" class="form-control" ng-model="currentEmployee.hiring_date" required />
+				        <div class="error" ng-show="employeeForm.hiredDay.$dirty && employeeForm.hiredDay.$invalid">
+				        	<span class="error" ng-show="employeeForm.hiredDay.$error.required">Date of hire can not be blank.</span>
+				        </div>
 				    </div>
 
 				    <div class="form-group">
 				        <label>Probation due:</label>
-				        <input type="date" class="form-control" ng-model="currentEmployee.prob_expire" />
+				        <input name="probationEnd" type="date" class="form-control" ng-model="currentEmployee.prob_expire"  />
+				   
 				    </div>
 
 				    <div class="form-group">
 				        <label>Benefit eligible:</label>
-				        <input type="date" class="form-control" ng-model="currentEmployee.act_insure" />
+				        <input name="benefitStart" type="date" class="form-control" ng-model="currentEmployee.act_insure" />
+				        
 				    </div>
 
-				    <button class="btn btn-primary" ng-click="saveChange(currentEmployee)">Save</button>
+				    <button class="btn btn-primary" ng-click="saveChange(currentEmployee)" ng-disabled="employeeForm.$invalid">Save</button>
 				    <button class="btn btn-primary" ng-click="cancelChange()">Cancel</button>
-				</div>
+				</form>
 
             </aside>
 

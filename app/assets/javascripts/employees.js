@@ -58,6 +58,7 @@ employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($s
 			$scope.createEmployee(employee);
 		}
 		$scope.currentEmployee = {};
+		$scope.employeeForm.$setPristine(true);
 	}
 
 	$scope.cancelChange = function () {
@@ -66,6 +67,7 @@ employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($s
 		}
 		$scope.currentEmployee = {};
 		$scope.formDisplay = false;
+		$scope.employeeForm.$setPristine(true);
 	}
 
 	$scope.listEmployees();
