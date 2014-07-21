@@ -1,0 +1,40 @@
+<form name="employeeForm" class="panel-body" ng-show="formDisplay" novalidate>
+				    <div class="form-group">
+				        <label>Name:</label>
+				        <input name="name" class="form-control" ng-model="currentEmployee.name" required />
+				        <div class="error" ng-show="employeeForm.name.$dirty && employeeForm.name.$invalid">
+				        	<span class="error" ng-show="employeeForm.name.$error.required">Name can not be blank.</span>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label>Social Secure #:</label>
+				        <input class="form-control" ng-model="currentEmployee.ssn" />
+				    </div>
+				    <div class="form-group">
+				        <label>Birthday:</label>
+				        <input type="date" class="form-control" ng-model="currentEmployee.birthday" />
+				    </div>
+
+				    <div class="form-group">
+				        <label>Date of hire:</label>
+				        <input name="hiredDay" type="date" class="form-control" ng-model="currentEmployee.hiring_date" required />
+				        <div class="error" ng-show="employeeForm.hiredDay.$dirty && employeeForm.hiredDay.$invalid">
+				        	<span class="error" ng-show="employeeForm.hiredDay.$error.required">Date of hire can not be blank.</span>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label>Probation due:</label>
+				        <input name="probationEnd" type="date" class="form-control" ng-model="currentEmployee.prob_expire"  />
+				   
+				    </div>
+
+				    <div class="form-group">
+				        <label>Benefit eligible:</label>
+				        <input name="benefitStart" type="date" class="form-control" ng-model="currentEmployee.act_insure" />
+				        
+				    </div>
+
+				    <button class="btn btn-primary" ng-click="saveChange(currentEmployee)" ng-disabled="employeeForm.$invalid">Save</button>
+				    <button class="btn btn-primary" ng-click="cancelChange()">Cancel</button>
+				</form>

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		if @user && @user.authenticate(params[:session][:password])
 			session[:remember_token] = @user.id.to_s
 			@current_user = @user
-			redirect_to @user
+			redirect_to user_employees_path(@user)
 		else
 			render 'new'
 		end

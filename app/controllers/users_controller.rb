@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 		if @user.save
 			session[:remember_token] = @user.id.to_s
 			@current_user = @user
-			redirect_to @user
+			redirect_to user_employees_path(@user)
 		else
 			render 'new'
 		end

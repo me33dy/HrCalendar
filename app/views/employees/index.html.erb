@@ -2,32 +2,79 @@
 	<div ng-app="employeeApp" id="defaultContainer" data-user-id=<%= @user.id.to_s %> class="row" ng-controller="defaultCtrl" >
         <div class="panel-body col-sm-6 col-sm-offset-1 col-sm-push-4">
         	<!-- <article > -->
-	            <table class="table table-striped table-bordered">
-	                <thead>
-	                	<tr>
-		                	<th>Name</th>
-		                	<th>Birthday</th>
-		                	<th>Options</th>
-	                	</tr>
-	                </thead>
-	                <tbody>
-	                    <tr ng-hide="employees.length">
-	                        <td colspan="3" class="text-center">There is no employee in your record</td>
-	                    </tr>
-	                    <tr ng-repeat="e in employees">
-	                        <td>{{e.name}}</td>
-	                        <td>{{e.birthday | date}}</td>
-	                        <td class="text-center">
-	                        	<button class="btn btn-sm btn-primary" ng-click="editOrCreateEmployee(e)">
-	                        		Edit
-	                        	</button>
-	                         	<button class="btn btn-sm btn-primary btn-danger" ng-click="deleteEmployee(e)" >Delete
-	                        	</button>
-	                        </td>
-	                    </tr>
-	                </tbody>
-            	</table>
-        </div>
+		    <div class="input-group">
+			    <input type="text" class="form-control" ng-model="quickSearch">
+			    <span class="input-group-btn">
+				    <button class="btn btn-default" type="button">quick search</button>
+			    </span>		     
+		   </div>
+			<!-- </div> -->
+            <!-- <table class="table table-striped table-bordered">
+                <thead>
+                	<tr>
+	                	<th>Name</th>
+	                	<th>Social #</th>
+	                	<th>Options</th>
+                	</tr>
+                </thead>
+                <tbody>
+                    <tr ng-hide="employees.length">
+                        <td colspan="3" class="text-center">There is no employee in your record</td>
+                    </tr>
+                    <tr ng-repeat="e in (employees | orderBy: 'name' | filter:quickSearch)">
+                        <td>{{e.name}}</td>
+                        <td>{{e.ssn}}</td>
+                        <td class="text-center">
+                        	<button class="btn btn-sm btn-primary" ng-click="editOrCreateEmployee(e)">
+                        		Edit
+                        	</button>
+                         	<button class="btn btn-sm btn-primary btn-danger" ng-click="deleteEmployee(e)" >Delete
+                        	</button>
+                        </td>
+                    </tr>
+                </tbody>
+        	</table>
+ -->
+        	<table class="table table-striped table-bordered">
+                <thead>
+                	<tr>
+	                	<th>Name</th>
+	                	<th>Birthday</th>
+	                	<th class="text-center">Options</th>
+                	</tr>
+                </thead>
+                <tbody>
+                    <tr ng-hide="employees.length">
+                        <td colspan="3" class="text-center">There is no employee in your record</td>
+                    </tr>
+                    <tr ng-repeat="e in employees | dateFilter:orderWay | orderBy:orderWay ">
+                        <td>{{e.name}}</td>
+                        <td>{{e.birthday}}</td>
+                        <td class="text-center">
+                        	<button class="btn btn-sm btn-primary" ng-click="editOrCreateEmployee(e)">
+                        		Edit
+                        	</button>
+                         	<button class="btn btn-sm btn-primary btn-danger" ng-click="deleteEmployee(e)" >Delete
+                        	</button>
+                        </td>
+                    </tr>
+                </tbody>
+        	</table>
+
+
+
+
+
+
+
+
+
+
+
+    	</div>
+
+
+
           <!--   </article> -->
             <aside class="panel-body col-sm-5 col-sm-pull-8">
             	<div class=>
@@ -46,7 +93,7 @@
 				        </div>
 				    </div>
 				    <div class="form-group">
-				        <label>Social Secure #:</label>
+				        <label>Social Security #:</label>
 				        <input class="form-control" ng-model="currentEmployee.ssn" />
 				    </div>
 				    <div class="form-group">

@@ -19,8 +19,23 @@ employeeManagement.factory("Employee", ["$resource", function ($resource) {
 	return $resource("/users/:userId/employees/:id", { userId: userAccountId, id: '@id'}, { create: {method: "POST"}, update: {method: "PUT"} });
 }]);
 
-employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($scope, Employee) {
+employeeManagement.filter("dateFilter", function () {
+	return function (data, property) {
+		
+		var filteredData = [];
+		if (angular.isArray(data)) {
+			for(var i=0; i<data.length; i++) {
+				if (new Date(data[i][property]).getMonth() == new Date().getMonth()) {
+					filteredData.push(data[i]);
+				}
+			}
+		}
+		return filteredData;
+	}
+});
 
+employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($scope, Employee) {
+	$scope.orderWay = "birthday";
 	$scope.formDisplay = false;
 	$scope.currentEmployee = null;
 
@@ -62,7 +77,7 @@ employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($s
 	}
 
 	$scope.cancelChange = function () {
-		if ($scope.currentEmployee & $scope.currentEmployee.$get) {
+		if ($scope.currentEmployee && $scope.currentEmployee.$get) {
 			$scope.currentEmployee.$get();
 		}
 		$scope.currentEmployee = {};
@@ -71,6 +86,7 @@ employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($s
 	}
 
 	$scope.listEmployees();
+
 }]);
 
 
