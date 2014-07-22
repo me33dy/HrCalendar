@@ -39,8 +39,9 @@
                 <thead>
                 	<tr>
 	                	<th>Name</th>
-	                	<th>Birthday</th>
+	                	<th><select ng-model="orderWay" ng-options="option.name as option.label for option in columnOptions"></select></th>
 	                	<th class="text-center">Options</th>
+	                	{{columnOPtions}}
                 	</tr>
                 </thead>
                 <tbody>
@@ -49,7 +50,7 @@
                     </tr>
                     <tr ng-repeat="e in employees | dateFilter:orderWay | orderBy:orderWay ">
                         <td>{{e.name}}</td>
-                        <td>{{e.birthday}}</td>
+                        <td>{{e[orderWay]}}</td>
                         <td class="text-center">
                         	<button class="btn btn-sm btn-primary" ng-click="editOrCreateEmployee(e)">
                         		Edit

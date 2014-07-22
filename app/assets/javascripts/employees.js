@@ -35,9 +35,15 @@ employeeManagement.filter("dateFilter", function () {
 });
 
 employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($scope, Employee) {
-	$scope.orderWay = "birthday";
+	$scope.orderWay = "hiring_date";
 	$scope.formDisplay = false;
 	$scope.currentEmployee = null;
+	$scope.columnOptions = [
+		{name: 'hiring_date', label: 'Date of hire'},
+		{name:'birthday', label: 'Birthday'},
+		{name: 'prob_expire', label: 'Probation due'},
+		{name: 'act_insure', label: 'Benefit eligible'}
+	];
 
 	// to gather all the employees from the current user
 	$scope.listEmployees = function () {
