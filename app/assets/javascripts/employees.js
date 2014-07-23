@@ -19,13 +19,15 @@ employeeManagement.factory("Employee", ["$resource", function ($resource) {
 	return $resource("/users/:userId/employees/:id", { userId: userAccountId, id: '@id'}, { create: {method: "POST"}, update: {method: "PUT"} });
 }]);
 
+
+
 employeeManagement.filter("dateFilter", function () {
-	return function (data, property) {
+	return function (data, property, num) {
 		
 		var filteredData = [];
 		if (angular.isArray(data)) {
 			for(var i=0; i<data.length; i++) {
-				if (new Date(data[i][property]).getMonth() == new Date().getMonth()) {
+				if (new Date(data[i][property]).getMonth() == num) {
 					filteredData.push(data[i]);
 				}
 			}
@@ -34,15 +36,31 @@ employeeManagement.filter("dateFilter", function () {
 	}
 });
 
+
 employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($scope, Employee) {
-	$scope.orderWay = "hiring_date";
+	$scope.propertySelected = "hiring_date";
+	$scope.monthSelected = new Date().getMonth();
 	$scope.formDisplay = false;
 	$scope.currentEmployee = null;
-	$scope.columnOptions = [
+	$scope.propertyOptions = [
 		{name: 'hiring_date', label: 'Date of hire'},
 		{name:'birthday', label: 'Birthday'},
 		{name: 'prob_expire', label: 'Probation due'},
 		{name: 'act_insure', label: 'Benefit eligible'}
+	];
+	$scope.monthOptions = [
+		{code: 0, label: 'Janguary'},
+		{code: 1, label: 'February'},
+		{code: 2, label: 'March'},
+		{code: 3, label: 'April'},
+		{code: 4, label: 'May'},
+		{code: 5, label: 'June'},
+		{code: 6, label: 'July'},
+		{code: 7, label: 'August'},
+		{code: 8, label: 'September'},
+		{code: 9, label: 'October'},
+		{code: 10, label: 'November'},
+		{code: 11, label: 'December'}
 	];
 	
 
