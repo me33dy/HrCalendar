@@ -44,6 +44,7 @@ employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($s
 		{name: 'prob_expire', label: 'Probation due'},
 		{name: 'act_insure', label: 'Benefit eligible'}
 	];
+	
 
 	// to gather all the employees from the current user
 	$scope.listEmployees = function () {
