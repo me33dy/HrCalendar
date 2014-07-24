@@ -38,7 +38,7 @@ employeeManagement.filter("dateFilter", function () {
 
 
 employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($scope, Employee) {
-	$scope.defaultView = true;
+	$scope.defaultView = false;
 	$scope.propertySelected = "hiring_date";
 	$scope.monthSelected = new Date().getMonth();
 	$scope.formDisplay = false;
@@ -75,6 +75,13 @@ employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($s
 		if ($scope.monthSelected > 0)  {
 			$scope.monthSelected--;
 		} 
+	};
+
+	$scope.showDefault = function () {
+		$scope.defaultView = true;
+	};
+	$scope.showMonthly = function () {
+		$scope.defaultView = false;
 	};
 	// to gather all the employees from the current user
 	$scope.listEmployees = function () {

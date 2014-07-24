@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html x-ng-app>
+<html ng-app="employeeApp">
 <head>
   <title>NewHired</title>
   <%= stylesheet_link_tag    "application" %>
@@ -23,13 +23,13 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
         <% if current_user %>
-         <li><%= link_to 'Sign Out', sessions_path, method: :delete %></li>
+
         <% else %>
         <%= link_to 'Sign Up', new_user_path%></li>
-        <li><%= link_to 'Sign In', new_sessions_path %></li>
+          <li><%= link_to 'Sign In', new_sessions_path %></li>
         <% end %>
 
       </ul>
@@ -56,11 +56,11 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-		<div class="main">
+
+
 			<%= yield %>
-		</div>
-</div>
+
+
 
 </body>
 </html>

@@ -1,12 +1,17 @@
 
-	<div ng-app="employeeApp" id="defaultContainer" data-user-id=<%= @user.id.to_s %> class="row" ng-controller="defaultCtrl" >
-        <div class="panel-body col-sm-6 col-sm-offset-1 col-sm-push-4">
-        	<ul class="nav nav-tabs" role="tablist">
-			  <li><a href="#">all employees</a></li>
-			  <li><a href="#">Monthly view</a></li>
+	
+ 	<div class = "main">
+	<div id="defaultContainer" data-user-id=<%= @user.id.to_s %> class="row" ng-controller="defaultCtrl" >
+		    <ul class="nav nav-tabs" role="tablist">
+				<li><a href="#" ng-click="showDefault()">all employees</a></li>
+          		<li><a href="#" ng-click="showMonthly()">Monthly view</a></li>
+          		<li><%= link_to 'Sign Out', sessions_path, method: :delete %></li>
+          		<li><%= link_to 'Edit Account', edit_user_path(current_user) %></li>
 			</ul>
+        <div class="panel-body col-sm-6 col-sm-offset-1 col-sm-push-4">
+
         	<!-- <article -->
-        	<div >
+        	<div ng-show="defaultView">
 			    <div class="input-group">
 				    <input type="text" class="form-control" ng-model="quickSearch">
 				    <span class="input-group-btn">
@@ -41,7 +46,7 @@
 	        	</table>
 	        </div>
 		
- 			<div>
+ 			<div ng-hide="defaultView">
 	 			<div class="well">
 	 				<button class="btn btn-primary btn-sm" type="button" ng-click="monthDecrement()" ><span class="glyphicon glyphicon-chevron-left"></button>
 	 				<select ng-model="monthSelected" ng-options="month.code as month.label for month in monthOptions"></select>
@@ -142,5 +147,5 @@
 
            
         
-    </div>
+        </div>
 
