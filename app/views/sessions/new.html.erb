@@ -1,11 +1,12 @@
 <div class="row">
-	<h2>User log in</h2>
 	<%= form_for :session, :url => sessions_path, html: {class: "form-horizontal"} do |f| %>
 		<%= f.label :email, class: "control-label" %>
 		<%= f.text_field :email, class: "form-control" %><br />
 		<%= f.label :password, class: "control-label"  %>
 		<%= f.password_field :password, class: "form-control" %><br />
 		<%= f.submit 'log in', class: "btn btn-default" %>
+		<%= link_to 'Cancel', root_path, class: "btn btn-danger" %> 		
+		
 	<% end %>
 </div>
 
