@@ -38,7 +38,7 @@ employeeManagement.filter("dateFilter", function () {
 
 
 employeeManagement.controller("defaultCtrl", ["$scope", "Employee", function ($scope, Employee) {
-	$scope.defaultView = false;
+	$scope.defaultView = true;
 	$scope.propertySelected = "hiring_date";
 	$scope.monthSelected = new Date().getMonth();
 	$scope.formDisplay = false;

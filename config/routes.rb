@@ -1,10 +1,7 @@
 Hrcalendar::Application.routes.draw do
   
   resources :users do
-    resources :employees do
-      get 'list', on: :collection
-      # get 'test_view'
-    end
+    resources :employees 
   end
 
   resource :sessions, only: [:new, :create, :destroy]
