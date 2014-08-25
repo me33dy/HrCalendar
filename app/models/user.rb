@@ -7,6 +7,8 @@ class User
   field :email, type: String
   field :salt, type: String
   field :hashed_password, type: String
+
+  validates_uniqueness_of :email
   
   has_many :employees, dependent: :destroy
 
