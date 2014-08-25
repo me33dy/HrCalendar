@@ -98,7 +98,7 @@
 				        <label>Name:</label>
 				        <input name="name" class="form-control" ng-model="currentEmployee.name" required />
 				        <div class="error" ng-show="employeeForm.name.$dirty && employeeForm.name.$invalid">
-				        	<span class="error" ng-show="employeeForm.name.$error.required">Name can not be blank.</span>
+				        	<span class="error" ng-show="employeeForm.name.$error.required">Name cannot be blank.</span>
 				        </div>
 				    </div>
 				    <div class="form-group">
@@ -114,7 +114,7 @@
 				        <label>Date of hire:</label>
 				        <input name="hiredDay" type="date" class="form-control" ng-model="currentEmployee.hiring_date" required />
 				        <div class="error" ng-show="employeeForm.hiredDay.$dirty && employeeForm.hiredDay.$invalid">
-				        	<span class="error" ng-show="employeeForm.hiredDay.$error.required">Date of hire can not be blank.</span>
+				        	<span class="error" ng-show="employeeForm.hiredDay.$error.required">Date of hire cannot be blank.</span>
 				        </div>
 				    </div>
 
